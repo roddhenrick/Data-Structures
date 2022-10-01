@@ -1,39 +1,36 @@
-from dataclasses import dataclass
+class Node:
+
+    def __init__(self, value):
+        self.data = value
+        self.next = None
+
+    def __repr__(self):
+        return f'{self.data}'
 
 
 class LinkedList:
-    def _node(self, data):
-        node = {
-            'data': data,
-            'next_node': None
-        }
-        return node
-
     def __init__(self, data):
-        self.head = {
-            'data': data,
-            'next_node': None
-        }
+        self.head = Node(data)
         self.tail = self.head
         self.length = 1
 
     def __repr__(self):
-        return f"head = {{data: {self.head['data']}, next: {self.head['next_node']}}}"
+        return f"head = {{data: {self.head.data}, next: {self.head.next}}}"
 
     def append(self, value):
-        node = self._node(value)
-        self.tail['next_node'] = node
+        node = Node(value)
+        self.tail.next = node
         self.tail = node
         self.length += 1
 
     def prepend(self, value):
-        node = self._node(value)
-        node['next_node'] = self.head
+        node = Node(value)
+        node.next = self.head
         self.head = node
         self.length += 1
 
     def pop_left(self):
-        self.head = self.head['next_node']
+        self.head = self.head.next
         
 
 my_linked_list = LinkedList(10)
