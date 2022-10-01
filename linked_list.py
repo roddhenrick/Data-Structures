@@ -2,6 +2,13 @@ from dataclasses import dataclass
 
 
 class LinkedList:
+    def _node(self, data):
+        node = {
+            'data': data,
+            'next_node': None
+        }
+        return node
+
     def __init__(self, data):
         self.head = {
             'data': data,
@@ -14,13 +21,13 @@ class LinkedList:
         return f"head = {{data: {self.head['data']}, next: {self.head['next_node']}}}"
 
     def append(self, value):
-        node = {
-            'data': value,
-            'next_node': None
-        }
+        node = self._node(value)
         self.tail['next_node'] = node
         self.tail = node
         self.length += 1
+
+    def prepend(self, value):
+        ...
 
         
 
