@@ -32,10 +32,13 @@ class LinkedList:
         self.head = node
         self.length += 1
 
+    def pop_left(self):
+        self.head = self.head['next_node']
         
 
 my_linked_list = LinkedList(10)
 my_linked_list.append(30)
 my_linked_list.append(56)
 my_linked_list.prepend(1)
+my_linked_list.pop_left()
 print(my_linked_list)
