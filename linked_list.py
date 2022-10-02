@@ -5,7 +5,7 @@ class Node:
         self.next = None
 
     def __repr__(self):
-        return f'{self.data}'
+        return self.data
 
 
 class LinkedList:
@@ -15,7 +15,16 @@ class LinkedList:
         self.length = 1
 
     def __repr__(self):
-        return f"head = {{data: {self.head.data}, next: {self.head.next}}}"
+        nodes = []
+        current_node = self.head
+        while current_node is not None:
+            nodes.append(current_node.data)
+            current_node = current_node.next
+
+        nodes = [str(x) for x in nodes]
+        nodes.append('None')
+
+        return ' -> '.join(nodes)
 
     def append(self, value):
         node = Node(value)
