@@ -40,11 +40,32 @@ class LinkedList:
 
     def pop_left(self):
         self.head = self.head.next
+        self.length -= 1
         
+    def insert(self, index, value):
+        new_node = Node(value)
+        node = self.head
+        i = 0
+
+        while i < index :
+            previous = node
+            node = node.next
+            i += 1
+
+        previous.next = new_node
+        new_node.next = node
+        self.length += 1
+
+                
 
 my_linked_list = LinkedList(10)
 my_linked_list.append(30)
 my_linked_list.append(56)
+my_linked_list.append(564)
+my_linked_list.append(64)
 my_linked_list.prepend(1)
 my_linked_list.pop_left()
+my_linked_list.insert(2,403)
+my_linked_list.insert(4, 5000)
 print(my_linked_list)
+print(my_linked_list.length)
