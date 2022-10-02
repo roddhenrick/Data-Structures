@@ -56,6 +56,21 @@ class LinkedList:
         new_node.next = node
         self.length += 1
 
+    def remove(self, index):
+        if index > 0 and index < self.length:
+            node = self.head
+            i = 0
+
+            while i < index :
+                previous = node
+                node = node.next
+                i += 1
+
+            previous.next = node.next
+            self.length -= 1
+        else:
+            raise Exception('Index out of range.')
+
                 
 
 my_linked_list = LinkedList(10)
@@ -67,5 +82,6 @@ my_linked_list.prepend(1)
 my_linked_list.pop_left()
 my_linked_list.insert(2,403)
 my_linked_list.insert(4, 5000)
+my_linked_list.remove(4)
 print(my_linked_list)
 print(my_linked_list.length)
