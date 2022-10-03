@@ -12,12 +12,11 @@ class Stack:
     def __init__(self):
         self.top = None
         self.bottom = None
-        self.beggin = None
         self.length = 0
 
     def __repr__(self):
         nodes = []
-        current_node = self.beggin
+        current_node = self.top
         while current_node is not None:
             nodes.append(current_node.data)
             current_node = current_node.next
@@ -30,19 +29,19 @@ class Stack:
     def push(self, value):
         if self.length == 0:
             self.bottom = Node(value)
-            self.beggin = self.bottom
             self.top = self.bottom
             self.length += 1
         else:
-            self.top.next = Node(value)
-            self.bottom = self.top
-            self.top = self.top.next
+            node = Node(value)
+            node.next = self.top
+            self.top = node
             self.length += 1
 
     def peek(self):
         return self.top.data
 
-    def pop(self): ...
+    def pop(self):
+        self.top = None
 
 
     
@@ -52,6 +51,7 @@ my_stack = Stack()
 my_stack.push(10)
 my_stack.push(20)
 my_stack.push(30)
+#my_stack.pop()
 print(my_stack)
 print(my_stack.peek())
 print(my_stack.length)
