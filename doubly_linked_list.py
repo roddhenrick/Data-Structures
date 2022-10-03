@@ -52,12 +52,14 @@ class LinkedList:
         i = 0
 
         while i < index :
-            previous = node
+            prev = node
             node = node.next
             i += 1
 
-        previous.next = new_node
+        prev.next = new_node
+        new_node.previous = prev
         new_node.next = node
+        node.previous = new_node
         self.length += 1
 
     def remove(self, index):
@@ -83,9 +85,9 @@ my_linked_list.append(30)
 # my_linked_list.append(564)
 # my_linked_list.append(64)
 my_linked_list.prepend(1)
-my_linked_list.pop_left()
+#my_linked_list.pop_left()
+my_linked_list.insert(1,403)
 print(my_linked_list)
-# my_linked_list.insert(2,403)
 # my_linked_list.insert(4, 5000)
 # my_linked_list.remove(4)
 # print(my_linked_list)
