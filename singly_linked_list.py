@@ -37,6 +37,7 @@ class LinkedList:
     def prepend(self, value):
         node = Node(value)
         node.next = self.head
+        self.head.previous = node
         self.head = node
         self.length += 1
 
@@ -77,11 +78,11 @@ class LinkedList:
 
 my_linked_list = LinkedList(10)
 my_linked_list.append(30)
-print(my_linked_list)
 # my_linked_list.append(56)
 # my_linked_list.append(564)
 # my_linked_list.append(64)
-# my_linked_list.prepend(1)
+my_linked_list.prepend(1)
+print(my_linked_list)
 # my_linked_list.pop_left()
 # my_linked_list.insert(2,403)
 # my_linked_list.insert(4, 5000)
