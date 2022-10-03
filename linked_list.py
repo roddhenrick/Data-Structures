@@ -71,6 +71,18 @@ class LinkedList:
         else:
             raise Exception('Index out of range.')
 
+    def reverse(self):
+        actual = self.head
+        prev = None
+        next = actual.next
+
+        while next is not None:
+            next = actual.next
+            actual.next = prev
+            prev = actual
+            actual = next
+        self.head = self.tail
+
                 
 
 my_linked_list = LinkedList(10)
@@ -83,5 +95,6 @@ my_linked_list.pop_left()
 my_linked_list.insert(2,403)
 my_linked_list.insert(4, 5000)
 my_linked_list.remove(4)
+my_linked_list.reverse()
 print(my_linked_list)
 print(my_linked_list.length)
