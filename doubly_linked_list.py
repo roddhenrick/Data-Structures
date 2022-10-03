@@ -43,6 +43,7 @@ class LinkedList:
 
     def pop_left(self):
         self.head = self.head.next
+        self.head.previous = None
         self.length -= 1
         
     def insert(self, index, value):
@@ -82,8 +83,8 @@ my_linked_list.append(30)
 # my_linked_list.append(564)
 # my_linked_list.append(64)
 my_linked_list.prepend(1)
+my_linked_list.pop_left()
 print(my_linked_list)
-# my_linked_list.pop_left()
 # my_linked_list.insert(2,403)
 # my_linked_list.insert(4, 5000)
 # my_linked_list.remove(4)
