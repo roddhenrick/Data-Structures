@@ -44,7 +44,7 @@ class Stack:
             raise Exception('Stack is empty')
 
     def pop(self):
-        self.top =self.top.next
+        self.top = self.top.next
         self.length -= 1
 
 
