@@ -36,10 +36,16 @@ class Stack:
             self.top = self.top.next
             self.length += 1
 
+    def peek(self):
+        return self.top.data
+
+    
+
         
 my_stack = Stack()
 my_stack.push(10)
 my_stack.push(20)
 my_stack.push(30)
 print(my_stack)
+print(my_stack.peek())
 print(my_stack.length)
