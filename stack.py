@@ -38,10 +38,14 @@ class Stack:
             self.length += 1
 
     def peek(self):
-        return self.top.data
+        if self.length > 0:
+            return self.top.data
+        else:
+            raise Exception('Stack is empty')
 
     def pop(self):
-        self.top = None
+        self.top =self.top.next
+        self.length -= 1
 
 
     
@@ -51,7 +55,8 @@ my_stack = Stack()
 my_stack.push(10)
 my_stack.push(20)
 my_stack.push(30)
-#my_stack.pop()
+my_stack.pop()
+my_stack.pop()
 print(my_stack)
 print(my_stack.peek())
 print(my_stack.length)
