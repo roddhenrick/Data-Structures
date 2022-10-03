@@ -68,27 +68,34 @@ class LinkedList:
             i = 0
 
             while i < index :
-                previous = node
+                prev = node
                 node = node.next
                 i += 1
 
-            previous.next = node.next
+            prev.next = node.next
+            node.next.previous = prev
             self.length -= 1
         else:
             raise Exception('Index out of range.')
+
+    
+
+        
+
 
                 
 
 my_linked_list = LinkedList(10)
 my_linked_list.append(30)
-# my_linked_list.append(56)
-# my_linked_list.append(564)
-# my_linked_list.append(64)
-my_linked_list.prepend(1)
+my_linked_list.append(56)
+my_linked_list.append(564)
+my_linked_list.append(64)
+#my_linked_list.prepend(1)
 #my_linked_list.pop_left()
-my_linked_list.insert(1,403)
-print(my_linked_list)
+#my_linked_list.insert(1,403)
 # my_linked_list.insert(4, 5000)
-# my_linked_list.remove(4)
+#my_linked_list.remove(2)
+my_linked_list.reverse()
+print(my_linked_list)
 # print(my_linked_list)
 # print(my_linked_list.length)
