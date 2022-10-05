@@ -40,6 +40,22 @@ class BinaryTree:
                     else:
                         node = node.right
 
+    def lookup(self, value):
+        node = self.root
+
+        while True:
+            if node is None:
+                break
+
+            if value == node.value:
+                return node.value
+            elif value < node.value:
+                node = node.left
+            elif value > node.value:
+                node = node.right
+
+        return 'Node not found.'
+
 
 bi_tree = BinaryTree()
 bi_tree.insert(9)
@@ -51,3 +67,4 @@ bi_tree.insert(15)
 bi_tree.insert(1)
 result = json.dumps(bi_tree.traverse(bi_tree.root), indent=4)
 print(result)
+print(bi_tree.lookup(170))
