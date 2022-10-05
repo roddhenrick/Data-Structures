@@ -48,13 +48,53 @@ class BinaryTree:
                 break
 
             if value == node.value:
-                return node.value
+                return node
             elif value < node.value:
                 node = node.left
             elif value > node.value:
                 node = node.right
 
         return 'Node not found.'
+
+    def remove(self, value):
+        node = self.root
+        branch_root  = self.root
+
+        while True:
+            if node is None:
+                break
+
+            if value == node.value:
+                if branch_root.left.value == value:
+                    branch = branch_root.left
+
+                if branch_root.right.value == value:
+                    branch = branch_root.right
+
+                subtree = branch.left
+                while True:
+                    if subtree is not None:
+                        subtree.right = branch.right
+                        if branch == branch_root.right:
+                            branch_root.right = subtree
+                        else:
+                            branch_root.left = subtree
+                        break
+                    else:
+                        if branch == branch_root.right:
+                            branch_root.right = None
+                        else:
+                            branch_root.left = None
+                        break
+                break
+
+            elif value < node.value:
+                branch_root = node
+                node = node.left
+            elif value > node.value:
+                branch_root = node
+                node = node.right
+
 
 
 bi_tree = BinaryTree()
@@ -65,6 +105,7 @@ bi_tree.insert(20)
 bi_tree.insert(170)
 bi_tree.insert(15)
 bi_tree.insert(1)
-result = json.dumps(bi_tree.traverse(bi_tree.root), indent=4)
+bi_tree.remove(15)
+result = json.dumps(bi_tree.traverse(bi_tree.root), indent=2)
 print(result)
 print(bi_tree.lookup(170))
