@@ -72,12 +72,23 @@ class BinaryTree:
                     branch = branch_root.right
 
                 subtree = branch.left
+                rightmost_subtree = subtree.right
+                previous = rightmost_subtree
+
+                while rightmost_subtree is not None:
+                    previous = rightmost_subtree
+                    rightmost_subtree = rightmost_subtree.right
+
+                rightmost_subtree = previous
+                
                 while True:
+                    
                     if subtree is not None:
-                        subtree.right = branch.right
+                        rightmost_subtree.right = branch.right
                         if branch == branch_root.right:
                             branch_root.right = subtree
                         else:
+                            ...
                             branch_root.left = subtree
                         break
                     else:
@@ -105,7 +116,15 @@ bi_tree.insert(20)
 bi_tree.insert(170)
 bi_tree.insert(15)
 bi_tree.insert(1)
-bi_tree.remove(15)
+bi_tree.insert(0)
+bi_tree.insert(2)
+bi_tree.insert(5)
+bi_tree.insert(8)
+bi_tree.insert(13)
+bi_tree.insert(19)
+bi_tree.insert(160)
+bi_tree.insert(200)
+bi_tree.remove(4)
 result = json.dumps(bi_tree.traverse(bi_tree.root), indent=2)
 print(result)
-print(bi_tree.lookup(170))
+#print(bi_tree.lookup(170))
