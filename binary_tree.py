@@ -11,6 +11,9 @@ class BinaryTree:
     def __init__(self):
         self.root = None
 
+    def __repr__(self) -> str:
+        return json.dumps(self.traverse(self.root), indent= 3)
+
     def traverse(self, node):
         if not node == None:
             tree = {'value': node.value}
@@ -125,6 +128,4 @@ bi_tree.insert(19)
 bi_tree.insert(160)
 bi_tree.insert(200)
 bi_tree.remove(4)
-result = json.dumps(bi_tree.traverse(bi_tree.root), indent=2)
-print(result)
-#print(bi_tree.lookup(170))
+print(bi_tree)
