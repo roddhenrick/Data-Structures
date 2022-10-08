@@ -68,10 +68,10 @@ class BinaryTree:
                 break
 
             if value == node.value:
-                if branch_root.left.value == value:
+                if branch_root.left and branch_root.left.value == value:
                     branch = branch_root.left
 
-                if branch_root.right.value == value:
+                if branch_root.right and branch_root.right.value == value:
                     branch = branch_root.right
 
                 subtree = branch.left
@@ -111,20 +111,19 @@ class BinaryTree:
 
 
 bi_tree = BinaryTree()
-bi_tree.insert(9)
-bi_tree.insert(4)
-bi_tree.insert(6)
-bi_tree.insert(20)
-bi_tree.insert(170)
-bi_tree.insert(15)
-bi_tree.insert(1)
-bi_tree.insert(0)
-bi_tree.insert(2)
-bi_tree.insert(5)
-bi_tree.insert(8)
-bi_tree.insert(13)
-bi_tree.insert(19)
-bi_tree.insert(160)
-bi_tree.insert(200)
-bi_tree.remove(4)
+bi_tree.insert(60)
+bi_tree.insert(30)
+bi_tree.insert(51)
+bi_tree.insert(38)
+bi_tree.insert(55)
+bi_tree.insert(44)
+bi_tree.insert(54)
+bi_tree.insert(72)
+bi_tree.insert(73)
+bi_tree.insert(78)
+bi_tree.insert(85)
+bi_tree.insert(86)
+bi_tree.insert(90)
+bi_tree.insert(99)
+bi_tree.remove(51)
 print(bi_tree)
