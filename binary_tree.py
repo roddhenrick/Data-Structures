@@ -1,4 +1,5 @@
 import json
+from turtle import right
 
 class Node:
     def __init__(self, value):
@@ -75,12 +76,24 @@ class BinaryTree:
                 parent = node
                 node = node.right
             elif node.value == value:
-                if node.left == None and  node.right == None:
-                    if parent.left.value == value:
+                if not (node.left or  node.right):
+                    if parent.left and parent.left.value == value:
                         parent.left = None
                     else:
                         parent.right = None
                     return
+                elif node.left or node.right:
+                    if node.left:
+                        node = node.left
+                    else:
+                        node = node.right
+
+                    if parent.left.value == value:
+                        parent.left = node
+                    else:
+                        parent.right = node
+                    return
+
                         
 
 
@@ -92,6 +105,6 @@ bi_tree.insert(20)
 bi_tree.insert(40)
 bi_tree.insert(70)
 bi_tree.insert(80)
-bi_tree.insert(60)
-bi_tree.remove(80)
+#bi_tree.insert(60)
+bi_tree.remove(70)
 print(bi_tree)
