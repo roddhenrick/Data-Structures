@@ -91,7 +91,6 @@ class BinaryTree:
                         if branch == branch_root.right:
                             branch_root.right = subtree
                         else:
-                            ...
                             branch_root.left = subtree
                         break
                     else:
