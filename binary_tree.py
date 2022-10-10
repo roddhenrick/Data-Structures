@@ -1,5 +1,4 @@
 import json
-from turtle import right
 
 class Node:
     def __init__(self, value):
@@ -62,7 +61,7 @@ class BinaryTree:
 
     def remove(self, value):
         node = self.root
-        parent  = self.root
+        parent  = None
 
         if node is None:
             return "Empty Tree"
@@ -82,6 +81,9 @@ class BinaryTree:
                     else:
                         parent.right = None
                     return
+                elif node.left and node.right:
+                    leftmost = self._find_min(node.right)
+
                 elif node.left or node.right:
                     if node.left:
                         node = node.left
@@ -93,18 +95,28 @@ class BinaryTree:
                     else:
                         parent.right = node
                     return
+    
+    def _find_min(self, node):
+        while node.left:
+            node = node.left
+        return node.value
 
                         
 
 
 
 bi_tree = BinaryTree()
-bi_tree.insert(50)
-bi_tree.insert(30)
+bi_tree.insert(15)
+bi_tree.insert(10)
+bi_tree.insert(8)
+bi_tree.insert(12)
+bi_tree.insert(6)
+bi_tree.insert(11)
 bi_tree.insert(20)
-bi_tree.insert(40)
-bi_tree.insert(70)
-bi_tree.insert(80)
-#bi_tree.insert(60)
-bi_tree.remove(70)
+bi_tree.insert(17)
+bi_tree.insert(25)
+bi_tree.insert(16)
+bi_tree.insert(27)
+print(bi_tree.remove(15))
+
 print(bi_tree)
